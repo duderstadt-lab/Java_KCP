@@ -9,7 +9,7 @@ The plugin expects a table with x and y data. The region for changpoint analysis
     x column - X column for change point analysis. Typically this is time or frame number.
     y column - Y column for change point analysis. Typlically this is position.  
     Trajectory - Number of the trajectory to analyze in the Results table. Multiple trajectories can be in the same table with different numbers in the Trajectory column. This parameter define the trajectory to analyze within the table. 
-    Confidence value - Confidence interval (1 - alpha). A value of 0.99 represent a 1% fault positive rate.  
+    Confidence value - Confidence interval (1 - alpha). A value of 0.99 represent a 1% false positive rate.  
     start - Start of the region for change point analysis in X values.              
     stop - End of the region for change point analysis in Y values.                          
     TableTitle - Title of the output table. 
@@ -21,15 +21,15 @@ A sample trajectory is included in the example folder with the expected output w
 
 2. Open the dialog to define the algorithm settings using Plugins->Kinetic Change Point. You will then be presented with numerous options. Use the following settings:
 
-      Table            :   Results   
-      x column         :   time 
-      y column         :   nucleotides  
-      Trajectory       :   0  
-      Confidence value :   0.99
-      start            :   50     
-      stop             :   440
-      TableTitle       :   Segments
-      steps            :   UNCHECKED
+    Table            :   Results   
+    x column         :   time 
+    y column         :   nucleotides  
+    Trajectory       :   0  
+    Confidence value :   0.99
+    start            :   50     
+    stop             :   440
+    TableTitle       :   Segments
+    steps            :   UNCHECKED
 
 (an image of the dialog with these settings is included in the example directory)
 
