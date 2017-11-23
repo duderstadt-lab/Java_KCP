@@ -28,19 +28,29 @@ A sample trajectory is included in the example folder with the expected output w
 1. Open the exampletrajectory.csv file using File->Open. A results table with time, nucleotides, trajectory and position columns.
 
 2. Open the dialog to define the algorithm settings using Plugins->Kinetic Change Point. You will then be presented with numerous options. Use the following settings:
+      
       Table                         :   Results
+      
       x column                      :   time
+      
       y column                      :   nucleotides
+      
       Trajectory                    :   0
+      
       Confidence value              :   0.99
+      
       start                         :   50
+      
       stop                          :   440
+      
       TableTitle                    :   Segments
+      
       steps                         :   UNCHECKED
       
 (an image of the dialog with these settings is included in the example directory)
 
 Click OK and an output table with the specified TableTitle will appear with a list of segments resulting from changepoint analysis. The columns in the output table have the following meaning for the equation for a line (y = A x + B):
+
       (x1, y1)  is the start position of each line segment.
       (x2, y2)  is the end position of each line segment
           A     is the slope of each line segment.
