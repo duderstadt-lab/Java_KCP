@@ -2,7 +2,6 @@ package kcp;
 
 import java.awt.AWTEvent;
 import java.awt.Choice;
-import java.awt.TextField;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -20,11 +19,10 @@ public class KineticChangePoint implements PlugIn, DialogListener {
 	private String xColumn = new String("Time");
 	private String yColumn = new String("Position");
 	private int trajectory = 0;
-	private double sigma = 160;
+	private double sigma = 100;
 	private double confidenceLevel = 0.99;
 	private int offset, length;
 	private double Xstart, Xend;
-	private boolean auto_determine_sigma = false;
 	private String table_title = "Segments";
 
 	private GenericDialog dialog;
@@ -78,9 +76,8 @@ public class KineticChangePoint implements PlugIn, DialogListener {
 		dialog.addChoice("x_column", columns, xColumn);
 		dialog.addChoice("y_column", columns, yColumn);
 		dialog.addNumericField("Trajectory", trajectory, 0);
-		dialog.addCheckbox("Automatically_determine_Sigma", auto_determine_sigma);	
 		dialog.addMessage("");
-		dialog.addNumericField("Or_specify_Sigma", sigma, 1);	
+		dialog.addNumericField("Sigma", sigma, 1);	
 		dialog.addMessage("");
 		dialog.addNumericField("Confidence_value", confidenceLevel, 2);
 		dialog.addMessage("Specify in X values:");
@@ -95,15 +92,13 @@ public class KineticChangePoint implements PlugIn, DialogListener {
 		if (dialog.wasCanceled())
 			return;
 
-		if (!auto_determine_sigma) {
-			load_data();
-			//Lets also convert the Xstart and Xend values into offset and length
-			for (int i = 0; i < xData.length; i++) {
-				if (xData[i] <= Xstart) {
-					offset = i;
-				} else if (xData[i] <= Xend) {
-					length = i - offset;
-				}
+		load_data();
+		//Lets also convert the Xstart and Xend values into offset and length
+		for (int i = 0; i < xData.length; i++) {
+			if (xData[i] <= Xstart) {
+				offset = i;
+			} else if (xData[i] <= Xend) {
+				length = i - offset;
 			}
 		}
 		
@@ -379,27 +374,6 @@ public class KineticChangePoint implements PlugIn, DialogListener {
 		return p[0];
 	}
 	
-	private double find_sigma() {
-		//We leave an extra 10 points gap between end of STD determination region 
-		//and analysis region for good luck!
-		//Sliding window size...  I guess I could add a field into the dialog for this?.?.?.
-		int N = 30;
-		double std_sum = 0;
-		for (int i = 0 ; i < (offset - N - 10) ; i++) {
-			double X_avg = 0;
-			double sum_square_diffs = 0;
-			for (int w = 0 ; w < N ; w++) {
-				X_avg += yData[i+w];
-			}
-			X_avg = X_avg/N;
-			for (int w = 0 ; w < N ; w++) {
-				sum_square_diffs += (yData[i+w]-X_avg)*(yData[i+w]-X_avg);
-			}
-			std_sum += Math.sqrt(sum_square_diffs/(N-1));
-		}
-		return std_sum/(offset - N - 10);
-	}
-	
 	@Override
 	public boolean dialogItemChanged(GenericDialog dialog, AWTEvent e) {
 		String newTable = dialog.getNextChoice();
@@ -419,36 +393,12 @@ public class KineticChangePoint implements PlugIn, DialogListener {
 		xColumn = dialog.getNextChoice();
 		yColumn = dialog.getNextChoice();
 		trajectory = (int)dialog.getNextNumber();
-		auto_determine_sigma = dialog.getNextBoolean();
 		sigma = dialog.getNextNumber();
 		confidenceLevel = dialog.getNextNumber();
 		Xstart = dialog.getNextNumber();
 		Xend = dialog.getNextNumber();
 		table_title = dialog.getNextString();
 		step_analysis = dialog.getNextBoolean();
-		
-		if (auto_determine_sigma) {
-			if (!yColumn.equals(" ") && !xColumn.equals(" ")) {
-				load_data();
-				//Lets also convert the Xstart and Xend values into offset and length
-				for (int i = 0; i < xData.length; i++) {
-					if (xData[i] <= Xstart) {
-						offset = i;
-					} else if (xData[i] <= Xend) {
-						length = i - offset;
-					}
-				}
-				if (offset < xData.length && offset > 40) {	
-					sigma = find_sigma();
-					@SuppressWarnings("rawtypes")
-					Vector textboxes = dialog.getNumericFields();
-					((TextField)textboxes.get(1)).setText(sigma + "");
-				}
-			}
-			dialog.getComponent(11).setEnabled(false);
-		} else {
-			dialog.getComponent(11).setEnabled(true);
-		}
 		
 		return true;
 	}
