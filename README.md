@@ -16,11 +16,11 @@ The plugin expects a table with x and y data. The region for changpoint analysis
     TableTitle - Title of the output table. 
     steps - If checked, the slope will be set to zero for all segments. This assumes you have data representing a series of steps and fits them using the algorithm.
 ```
-A sample trajectory is included in the example folder with the expected output when following the instructions below:
+A sample trajectory is included in the Example folder with the expected output when following the instructions below:
 
-1. Open the exampletrajectory.csv file using File->Open. A results table with time, nucleotides, trajectory and position columns.
+1. Open the exampletrajectory.csv file using File->Open. A results table with time, nucleotides, trajectory and position columns should open.
 
-2. Open the dialog to define the algorithm settings using Plugins->Kinetic Change Point. You will then be presented with numerous options. Use the following settings:
+2. Open the dialog to define the algorithm options using Plugins->Kinetic Change Point. Use the following settings:
 ```
     Table            :   Results
     x column         :   time 
@@ -33,9 +33,9 @@ A sample trajectory is included in the example folder with the expected output w
     TableTitle       :   Segments
     steps            :   UNCHECKED
 ```
-(an image of the dialog with these settings is included in the example directory)
+(an image of the dialog with these settings is included in the Example folder)
 
-Click OK and an output table with the specified TableTitle will appear with a list of segments resulting from changepoint analysis. The columns in the output table have the following meaning for the equation for a line (y = A x + B):
+Click OK and an output table with the specified TableTitle will appear with a list of segments resulting from Kinetic Change Point analysis. The columns in the output table have the following meaning for the equation for a line (y = A x + B):
 ```
       (x1, y1)  is the start position of each line segment.
       (x2, y2)  is the end position of each line segment
