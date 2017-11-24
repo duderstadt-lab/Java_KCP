@@ -98,7 +98,7 @@ public class KineticChangePoint implements PlugIn, DialogListener {
 			if (xData[i] <= Xstart) {
 				offset = i;
 			} else if (xData[i] <= Xend) {
-				length = i - offset;
+				length = i - offset + 1;
 			}
 		}
 		
