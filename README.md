@@ -1,7 +1,7 @@
 # Java_KCP
 Java based implementation of the Kinetic Change Point algorithm as an ImageJ plugin.
 
-Copy the jar file Java_KCPv1.0.jar into the plugins folder of imagej to install. The plugin can be accessed under the Menu Plugins->Kinetic Change Point or Plugins->Batch Kinetic Change Point.
+Copy the jar file Java_KCPv1.1.jar into the plugins folder of imagej to install. The plugin can be accessed under the Menu Plugins->Kinetic Change Point or Plugins->Batch Kinetic Change Point.
 
 The plugin expects a table with x and y data. The region for changpoint analysis must be specified as X start and end. The Dialog provides the following options:
 ```
@@ -44,7 +44,7 @@ Click OK and an output table with the specified TableTitle will appear with a li
           B     is the intercept of each line segment.
        sigma_B  is the Standard deviation of the intercept of each line segment.
 ```
-Version 1.0 has been tested on Fuji (here you have to go inside the package to install) on MacOS High Sierra. It has also been tested with ImageJ on MacOS Sierra and prior mac operating systems. 
+Version 1.1 has been tested on Fuji (here you have to go inside the package to install) on MacOS High Sierra. It has also been tested with ImageJ on MacOS Sierra and prior mac operating systems. 
 
 The Batch Kinetic Change Point plugin performs the same algorithm but on multiple trajectories at once. Expected input is a table with a trajectory column that provides unique numbers for each trajectory. The batch tool will perform kinetic change point analysis on each trajectory and generate an output segments table in which a trajectory column is also provided with numbering that matches the input table.
 
