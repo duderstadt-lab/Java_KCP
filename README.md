@@ -1,13 +1,13 @@
 # Java_KCP
 Java based implementation of the Kinetic Change Point algorithm as an ImageJ plugin.
 
-Copy the jar file Java_KCPv1.0.jar into the plugins folder of imagej to install. The plugin can be accessed under the Menu Plugins->Kinetic Change Point or Plugins->Batch Kinetic Change Point
+Copy the jar file Java_KCPv1.0.jar into the plugins folder of imagej to install. The plugin can be accessed under the Menu Plugins->Kinetic Change Point or Plugins->Batch Kinetic Change Point.
 
 The plugin expects a table with x and y data. The region for changpoint analysis must be specified as X start and end. The Dialog provides the following options:
 ```
-    Table - Name of the table that contains the raw data. Typlically this is the Results table.
+    Table - Name of the table that contains the raw data. Typically this is the Results table.
     x column - X column for change point analysis. Typically this is time or frame number.
-    y column - Y column for change point analysis. Typlically this is position.  
+    y column - Y column for change point analysis. Typically this is position.  
     Trajectory - Number of the trajectory to analyze in the Results table. Multiple trajectories can be in the same table with different numbers in the Trajectory column. This parameter define the trajectory to analyze within the table. 
     Sigma - Standard deviation of the background noise. Can be determined using the region prior to enzymatic activity.
     Confidence value - Confidence interval (1 - alpha). A value of 0.99 represent a 1% false positive rate.  
