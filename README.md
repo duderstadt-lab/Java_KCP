@@ -8,11 +8,11 @@ The plugin expects a table with x and y data. The region for changpoint analysis
     Table - Name of the table that contains the raw data. Typically this is the Results table.
     x column - X column for change point analysis. Typically this is time or frame number.
     y column - Y column for change point analysis. Typically this is position.  
-    Trajectory - Number of the trajectory to analyze in the Results table. Multiple trajectories can be in the same table with different numbers in the Trajectory column. This parameter define the trajectory to analyze within the table. 
+    Trajectory - Number of the trajectory to analyze in the Results table. Multiple trajectories can be in the same table with different numbers in the Trajectory column. This parameter defines the trajectory to analyze within the table. 
     Sigma - Standard deviation of the background noise. Can be determined using the region prior to enzymatic activity.
-    Confidence value - Confidence interval (1 - alpha). A value of 0.99 represent a 1% false positive rate.  
+    Confidence value - Confidence interval (1 - alpha). A value of 0.99 represents a 1% false positive rate.  
     start - Start of the region for change point analysis in X values.              
-    stop - End of the region for change point analysis in Y values.                          
+    stop - End of the region for change point analysis in X values.                          
     TableTitle - Title of the output table. 
     steps - If checked, the slope will be set to zero for all segments. This assumes you have data representing a series of steps and fits them using the algorithm.
 ```
