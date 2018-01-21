@@ -1,7 +1,9 @@
 # Java_KCP
-Java based implementation of the Kinetic Change Point algorithm as an ImageJ plugin.
+Java based implementation of the Kinetic Change Point algorithm as an ImageJ plugin. Please cite:
 
-Copy the jar file Java_KCPv1.1.jar into the plugins folder of imagej to install. The plugin can be accessed under the Menu Plugins->Kinetic Change Point or Plugins->Batch Kinetic Change Point.
+Hill, F.R., van Oijen, A.M., and Duderstadt, K.E. (2018). Detection of kinetic change points in piece-wise linear single molecule motion. The Journal of Chemical Physics 148, 123317.
+
+To install the plugin copy the jar file Java_KCPv1.1.jar into the plugins folder of imagej. The plugin can be accessed under the Menu Plugins->Kinetic Change Point or Plugins->Batch Kinetic Change Point.
 
 The plugin expects a table with x and y data. The region for changpoint analysis must be specified as X start and end. The Dialog provides the following options:
 ```
